@@ -1,0 +1,42 @@
+<html>
+    <body>
+        <script>
+            var memory = new WebAssembly.Memory({ initial: 2})
+            var buffer = new Uint8Array(memory.buffer)
+            var importObject = {
+                js: {
+                    mem: memory
+                },
+                console: {
+                    log: function(arg) {
+                        console.log(arg);
+                    }
+                }
+            }
+            
+            WebAssembly.instantiateStreaming(fetch('levenshtein.wasm'), importObject)
+                .then(obj => {
+
+                    let test_a = ["a", "ab", "ac", "abc", "xabxcdxxefxgx", "xabxcdxxefxgx", "javawasneat",  "example", "forward", "sturgeon", "levenshtein",  "distance", "distance"]
+                    let test_b = ["b", "ac", "bc", "axc", "1ab2cd34ef5g6", "abcdefg",       "scalaisgreat", "samples", "drawrof", "urgently", "frankenstein", "difference", "eistancd"]
+                    let test_results = [1, 1, 1, 1, 6, 6, 7, 3, 6, 6, 6, 5, 2]
+
+                    for(let i = 0; i < test_a.length; i++) {
+                        let idx = 0
+                        let a = test_a[i]
+                        let b = test_b[i]
+
+                        for (let i = 0; i < a.length; i++) {
+                            buffer[idx++] = a[i].charCodeAt(0)
+                        }
+
+                        for (let i = 0; i < b.length; i++) {
+                            buffer[idx++] = b[i].charCodeAt(0)
+                        }
+                        console.log(test_a[i] + " vs " + test_b[i])
+                        console.log(obj.instance.exports.levenshtein(a.length, b.length) + " vs " + test_results[i])
+                    }
+                })
+      </script>
+    </body>
+</html>
