@@ -1,4 +1,4 @@
-const leven = require('../src/index.js');
+const leven = require('../src/wa-leven.js');
 const assert = require('assert');
 
 describe('levenshtein', () => {
@@ -22,7 +22,7 @@ describe('levenshtein', () => {
     assert.equal(leven('因為我是中國人所以我會說中文', '因為我是英國人所以我會說英文'), 2);
     assert.equal(leven('mikailovitch', 'Mikhaïlovitch'), 3);
   });
-  
+
   it('Should return correct levenshtein distance for long texts', () => {
     const text1 =
       'Morbi interdum ultricies neque varius condimentum. Donec volutpat turpis interdum metus ultricies vulputate. Duis ultricies rhoncus sapien, sit amet fermentum risus imperdiet vitae. Ut et lectus';

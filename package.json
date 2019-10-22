@@ -2,7 +2,7 @@
   "name": "wa-levenshtein",
   "version": "1.0.0",
   "description": "WebAssembly fast-levenshtein implementation",
-  "main": "src/index.js",
+  "main": "src/wa-leven.js",
   "scripts": {
     "test": "mocha"
   },
