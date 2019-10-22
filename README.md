@@ -1,3 +1,5 @@
+https://travis-ci.com/rrafols/wa-levenshtein.svg?branch=master
+
 # wa-levenshtein
 
 webassembly implementation of fast-levenshtein algorithm (without collator)
