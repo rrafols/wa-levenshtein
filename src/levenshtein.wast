@@ -2,7 +2,6 @@
     (memory (import "js" "mem") 1)
     (import "console" "log" (func $log (param i32) (param i32)))
 
-
     (func $levenshtein (param $len0 i32) (param $len1 i32) (result i32)
         (local $prevRow i32)
         (local $curCol i32)
@@ -45,7 +44,7 @@
             (set_local $i (i32.add (get_local $i) (i32.const 1)))
 
             ;; if (i == len1) exit loop
-            (br_if $initLoop (i32.le_u (get_local $i) (get_local $len1)))
+            (br_if $initLoop (i32.lt_u (get_local $i) (get_local $len1)))
         )
 
         ;; i = 0
