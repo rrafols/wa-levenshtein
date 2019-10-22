@@ -1,4 +1,4 @@
-(https://travis-ci.com/rrafols/wa-levenshtein.svg?branch=master)
+![build status](https://travis-ci.com/rrafols/wa-levenshtein.svg?branch=master)
 
 # wa-levenshtein
 
