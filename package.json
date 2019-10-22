@@ -1,0 +1,22 @@
+{
+  "name": "wa-levenshtein",
+  "version": "1.0.0",
+  "description": "WebAssembly fast-levenshtein implementation",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rrafols/wa-levenshtein.git"
+  },
+  "author": "Raimon Ràfols",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rrafols/wa-levenshtein/issues"
+  },
+  "homepage": "https://github.com/rrafols/wa-levenshtein#readme",
+  "devDependencies": {
+    "mocha": "^6.2.2"
+  }
+}
