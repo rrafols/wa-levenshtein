@@ -30,12 +30,7 @@
         )
 
         ;; prevRow = [n+1]
-        (set_local $prevRow
-            (i32.add 
-                (get_local $len0)
-                (get_local $len1)
-            )
-        )
+        (set_local $prevRow (i32.add  (get_local $len0) (get_local $len1)))
 
         ;; i = 0
         (set_local $i (i32.const 0))
@@ -46,10 +41,7 @@
 
                 ;; prevRow[i] = i
                 (i32.store8
-                    (i32.add
-                        (get_local $prevRow)
-                        (get_local $i)
-                    )
+                    (i32.add (get_local $prevRow) (get_local $i))
                     (get_local $i)
                 )
 
@@ -156,13 +148,5 @@
         (get_local $nextCol)
     )
 
-    (func $min_u (param $a i32) (param $b i32) (result i32)
-        (if (result i32)
-            (i32.lt_u (get_local $a) (get_local $b))
-            (then (get_local $a))
-            (else (get_local $b))
-        )
-    )
-    
     (export "levenshtein" (func $levenshtein))
 )
