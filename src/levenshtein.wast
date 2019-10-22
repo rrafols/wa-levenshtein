@@ -93,12 +93,7 @@
                             ;; nextCol = prevRow[j] + (strCmp ? 0 : 1);
                             (set_local $nextCol
                                 (i32.add
-                                    (i32.load8_u
-                                        (i32.add
-                                            (get_local $prevRow)
-                                            (get_local $j)
-                                        )
-                                    )
+                                    (i32.load8_u (i32.add (get_local $prevRow) (get_local $j)))
                                     (if (result i32)
                                         (i32.eq (get_local $c0) (get_local $c1))
                                         (then (i32.const 0))
@@ -122,12 +117,7 @@
                             ;; tmp = prevRow[j + 1] + 1;
                             (set_local $tmp
                                 (i32.add
-                                    (i32.load8_u
-                                        (i32.add
-                                            (i32.add (get_local $prevRow) (get_local $j))
-                                            (i32.const 1)
-                                        )
-                                    )
+                                    (i32.load8_u offset=1 (i32.add (get_local $prevRow) (get_local $j))
                                     (i32.const 1)
                                 )
                             )
@@ -154,7 +144,7 @@
                     )
 
                     ;; prevRow[j] = nextCol;
-                    (i32.store8 
+                    (i32.store8
                         (i32.add (get_local $prevRow) (get_local $j))
                         (get_local $nextCol)
                     )
@@ -173,10 +163,7 @@
 
     (func $min_u (param $a i32) (param $b i32) (result i32)
         (if (result i32)
-            (i32.lt_u
-                (get_local $a)
-                (get_local $b)
-            )
+            (i32.lt_u (get_local $a) (get_local $b))
             (then (get_local $a))
             (else (get_local $b))
         )
